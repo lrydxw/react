@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.test{
+				color: #f66;
+			}
+			#xixi{
+				font-size: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+	<script type="text/babel">
+		var ChildCom = React.createClass({
+			//获取默认的属性----只执行一次
+			getDefaultProps:function(){
+				console.log("getDefaultProps",1);
+			},
+			//获取默认的初始状态
+			getInitialState:function(){
+				console.log("getInitialState",2);
+				//return null;
+				return {
+					userName:"wxx",
+					password:"123456"
+				}
+			},
+			//组件即将被装载------ajax请求-----状态的最后修改时期
+			// this.setState({
+			//		userName:"wxx01"
+			//})
+			componentWillMount:function(){
+				console.log("componentWillMount",3);
+				//ajax请求 fetch.js 用fetch实现
+			},
+			//装载，不允许ajax请求
+			render:function(){
+				console.log("render",4);
+				return (
+					<div >
+						初始化生命周期
+						{this.state.userName}
+						{this.state.password}
+					</div>
+				)
+			},
+			//装载完毕，dom操作
+			componentDidMount:function(){
+				console.log("componentDidMount",5);
+			}
+			
+		});
+		ReactDOM.render(<div><ChildCom></ChildCom></div>,document.getElementById("app"));
+	</script>
+</html>

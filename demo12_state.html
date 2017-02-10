@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.test{
+				color: #f66;
+			}
+			#xixi{
+				font-size: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+	<script type="text/babel">
+		var ChildCom = React.createClass({
+			//onClick 注意第一个C要大写
+			render:function(){
+				return (
+					<div >
+						我是孩子
+						<p>{this.props.name}</p>
+					</div>
+				)
+			}
+			
+		});
+		var MyComponent = React.createClass({
+			getInitialState:function(){
+				return {
+					test:"4567890"
+				}
+			},
+			changeHandle:function(){
+				this.setState({
+					test: this.refs.user.value
+				})
+			},
+			render:function(){
+				console.log("MyComponent",this.refs)
+				return (
+					<div>
+						我是父亲
+						<input type="text" ref="user" value={this.state.test} onChange = {this.changeHandle} />
+						<ChildCom name={this.state.test}/>
+					</div>
+				)
+			}
+		});
+		ReactDOM.render(<MyComponent  classTitle="react" />,document.getElementById("app"));
+	</script>
+</html>

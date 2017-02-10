@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.test{
+				color: #f66;
+			}
+			#xixi{
+				font-size: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+	<script type="text/babel">
+		var ChildCom = React.createClass({
+			clickHandle:function(){
+				console.log("ref",this.refs.userName.value)
+				console.log("user",document.getElementById("user").value);
+			},
+			changeHandle:function(){
+				console.log("ref1",this.refs.userName.value)
+				console.log("user1",document.getElementById("user").value);
+			},
+			//onClick 注意第一个C要大写
+			render:function(){
+				console.log("ChildCom",this.refs)
+				return (
+					<div >
+						我是孩子
+						<input type="text" id="user"  ref="userName" onChange = {this.changeHandle}/>
+						<input type="button" onClick={this.clickHandle} value="获取"/>
+						<p>{this.props.name}</p>
+					</div>
+				)
+			}
+			
+		});
+		var MyComponent = React.createClass({
+			
+			render:function(){
+				console.log("MyComponent",this.refs)
+				return (
+					<div>
+						我是父亲
+						<ChildCom name="我来自父亲"/>
+					</div>
+				)
+			}
+		});
+		ReactDOM.render(<MyComponent  classTitle="react" />,document.getElementById("app"));
+	</script>
+</html>

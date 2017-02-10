@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.test{
+				color: #f66;
+			}
+			#xixi{
+				font-size: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+	<script type="text/babel">
+		var user = ["老王1","老王2","千年老王"];
+		var ChildCom = React.createClass({
+			//onClick 注意第一个C要大写
+			render:function(){
+				var len = user.length;
+				var arr = [];
+				for(var i = 0; i <　len; i++){
+					arr.push(<li>{user[i]}</li>);
+				}
+				console.log(arr);
+				return (
+					<ul >
+						{arr}
+					</ul>
+				)
+			}
+			
+		});
+		ReactDOM.render(<ChildCom/>,document.getElementById("app"));
+	</script>
+</html>

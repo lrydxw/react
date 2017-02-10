@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/browser.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.test{
+				color: #f66;
+			}
+			#xixi{
+				font-size: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+	<script type="text/babel">
+		var testStyle = {
+			headerStyle:{
+				color:"#00f",
+				fontSize:"30px"
+			},
+			footerStyle:{
+				color:"#f66",
+				fontSize:"30px"
+			}
+			
+			
+		}
+		//声明式,组件名称首字母大写
+		//React.createClass(obj)用来生成一个组件类---面向对象的写法
+		var MyComponent = React.createClass({
+			
+			//渲染函数,面向对象写法，render不能随意更改
+			render:function(){
+				return (
+					<div>
+						<p className="test">你好,react,zz1611来啦!</p>
+						<p style={testStyle.headerStyle}>{'我很高兴'}</p>
+						<p>{
+							
+							//	this.props.name
+							
+							}</p>
+						<p>{
+							
+							//	this.props.classTitle
+							
+							}</p>
+						<p id="xixi">{(function(obj,prop){
+							if(obj.props[prop]){
+								return obj.props[prop]
+							}else{
+								return "老王1";
+							}
+						})(this,'name')}</p>
+					</div>
+				)
+			}
+			
+		});
+		//如何渲染到dom树上
+		ReactDOM.render(<MyComponent  classTitle="react"></MyComponent>,document.getElementById("app"));
+	
+	</script>
+</html>

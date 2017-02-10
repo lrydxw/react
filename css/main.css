@@ -1,0 +1,301 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+html {
+  width: 100%;
+  height: 100%;
+  font-size: 100px;
+}
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  background-color: #eee;
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: 'iconfont';
+  /* project id 194811 */
+  src: url('//at.alicdn.com/t/font_nv5k59waz7yi7ldi.eot');
+  src: url('//at.alicdn.com/t/font_nv5k59waz7yi7ldi.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_nv5k59waz7yi7ldi.woff') format('woff'), url('//at.alicdn.com/t/font_nv5k59waz7yi7ldi.ttf') format('truetype'), url('//at.alicdn.com/t/font_nv5k59waz7yi7ldi.svg#iconfont') format('svg');
+}
+@font-face {
+  font-family: font2;
+  src: url("Fontin_Sans_BI_45b.otf");
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+#app .rootBox {
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  flex-direction: column;
+}
+#app .rootBox header {
+  height: 0.44rem;
+  background-color: #f66;
+  text-align: center;
+  color: #fff;
+  font-size: 0.26rem;
+  line-height: 0.44rem;
+}
+#app .rootBox header ul {
+  display: flex;
+  height: 100%;
+  color: #fff;
+  font-size: 0.2rem;
+}
+#app .rootBox header ul li {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#app .rootBox header ul li:nth-child(1),
+#app .rootBox header ul li:nth-child(3) {
+  width: 0.6rem;
+}
+#app .rootBox header ul li:nth-child(1) {
+  text-shadow: 1px 1px 1px #000;
+  font-family: font2;
+}
+#app .rootBox header ul li:nth-child(1) .headerBtn {
+  display: block;
+  height: 0.3rem;
+  width: 0.5rem;
+  background: -webkit-linear-gradient(top, #ff8bc0, #e4366b);
+  border-radius: 0.1rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.3rem;
+  font-size: 0.14rem;
+  border: 1px solid #ccc;
+}
+#app .rootBox header ul li:nth-child(3) .headerBtn {
+  display: block;
+  height: 0.6rem;
+  width: 1rem;
+  background: -webkit-linear-gradient(top, #ff8bc0, #e4366b);
+  border-radius: 0.1rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.6rem;
+  font-size: 0.26rem;
+  border: 1px solid #ccc;
+}
+#app .rootBox header ul li:nth-child(3) i.iconfont {
+  font-size: 0.48rem;
+}
+#app .rootBox header ul li:nth-child(2) {
+  flex: 1;
+}
+#app .rootBox header ul li:nth-child(2) .searchBox {
+  width: 100%;
+  height: 60%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  color: #999;
+  border-radius: 0.1rem;
+}
+#app .rootBox header ul li:nth-child(2) .searchBox i {
+  width: 0.4rem;
+  display: block;
+}
+#app .rootBox header ul li:nth-child(2) .searchBox i.iconfont {
+  margin-top: 0.03rem;
+  margin-left: 0.05rem;
+}
+#app .rootBox header ul li:nth-child(2) .searchBox span {
+  display: block;
+  float: left;
+  font-size: 0.24rem;
+}
+#app .rootBox section {
+  flex: 1;
+  overflow-y: scroll;
+}
+#app .rootBox section .homeContent,
+#app .rootBox section .kindContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+#app .rootBox section .homeContent .swiper-container,
+#app .rootBox section .kindContent .swiper-container {
+  width: 100%;
+  height: 1.5rem;
+  overflow: hidden;
+}
+#app .rootBox section .homeContent .swiper-container img,
+#app .rootBox section .kindContent .swiper-container img {
+  width: 100%;
+}
+#app .rootBox section .homeContent #wrapperlo,
+#app .rootBox section .kindContent #wrapperlo {
+  position: absolute;
+  bottom: 0;
+  top: 1.5rem;
+  width: 100%;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll,
+#app .rootBox section .kindContent #wrapperlo #iscroll {
+  position: absolute;
+  width: 100%;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #pullDown,
+#app .rootBox section .kindContent #wrapperlo #iscroll #pullDown {
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  margin-top: -40px;
+  text-align: center;
+  line-height: 40px;
+  border-bottom: 1px solid #ccc;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList {
+  width: 100%;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li {
+  width: 100%;
+  height: 1rem;
+  background-color: #fff;
+  display: flex;
+  position: relative;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li:after,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proImg,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proImg {
+  width: 0.9rem;
+  height: 0.9rem;
+  margin: 0.05rem;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proImg img,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proImg img {
+  width: 100%;
+  height: 100%;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proInfo,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proInfo {
+  flex: 1;
+  margin-top: 0.07rem;
+  position: relative;
+  margin-right: 0.1rem;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proInfo P,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proInfo P {
+  width: 100%;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(1),
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(1) {
+  font-size: 0.14rem;
+  line-height: 0.17rem;
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal !important;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(2),
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(2) {
+  margin-top: 0.06rem;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(2) span,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(2) span {
+  color: #e4366b;
+  font-size: 0.18rem;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(2) del,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(2) del {
+  color: #999;
+  margin-left: 0.05rem;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(3),
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proInfo P:nth-child(3) {
+  margin-top: 0.04rem;
+  color: #333;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proInfo .cartBtn,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proInfo .cartBtn {
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0.1rem;
+  width: 0.6rem;
+  height: 0.3rem;
+  background: -webkit-linear-gradient(top, #ff8bc0, #e4366b);
+  display: block;
+  border-radius: 0.05rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #proList li .proInfo .cartBtn i.iconfont,
+#app .rootBox section .kindContent #wrapperlo #iscroll #proList li .proInfo .cartBtn i.iconfont {
+  font-size: 0.26rem;
+}
+#app .rootBox section .homeContent #wrapperlo #iscroll #pullUp,
+#app .rootBox section .kindContent #wrapperlo #iscroll #pullUp {
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  margin-bottom: -40px;
+  text-align: center;
+  line-height: 40px;
+}
+#app .rootBox section .kindContent #wrapperlo {
+  top: 0rem;
+}
+#app .rootBox footer {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #333;
+}
+#app .rootBox footer ul {
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+}
+#app .rootBox footer ul li {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+#app .rootBox footer ul li.active {
+  color: #f66;
+}
+/*# sourceMappingURL=main.css.map */

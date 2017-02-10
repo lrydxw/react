@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="libs/react.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/react-dom.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="libs/browser.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+	<script type="text/babel">
+		//声明式,组件名称首字母大写
+		//React.createClass(obj)用来生成一个组件类---面向对象的写法
+		var MyComponent = React.createClass({
+			//渲染函数,面向对象写法，render不能随意更改
+			render:function(){
+				return (
+					<div>
+						<p>你好,react,zz1611来啦!</p>
+						<p>我很高兴</p>
+					</div>
+				)
+			}
+			
+		});
+		//如何渲染到dom树上
+		ReactDOM.render(<MyComponent></MyComponent>,document.getElementById("app"));
+	</script>
+</html>

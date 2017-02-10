@@ -1,0 +1,252 @@
+1、组件化开发---webpack
+	package.json
+		webapck/jsx-loader/css-loader/style-loader/node-sass/sass-loader/url-loader/file-loader
+		react/react-dom
+	webpack.config.js
+		module.exports = {
+			entry:"./main.js",//入口文件
+			output:{//输出路径
+				path:"./",//输出路径
+				filename:"bundle.js"//输出文件名称
+			},
+			module:{//依赖
+				loaders:[
+					{
+						test:/\.js$/,//正则表达式，把我们的js结尾的文件按照我们的jsx-loader进行解析（如果你的组件后缀是jsx的，那么此时你就应该写/\.jsx$/）
+						loader:"jsx-loader"//依赖的loader
+						
+					},{
+						test:/\.less$/,
+						loader:"style!css!less"
+						
+					},
+					{   test:/\.(png|jpg)$/,
+						loader:'url-loader?limit=10000'
+					},//限制大小小于10k的
+					{	//处理文字时使用
+						test:/\.(eot|woff|svg|ttf|woff2|gif|appcache)(\?|$)/,
+						loader:'file-loader?name=[name].[ext]'
+					}
+				]
+				
+			}
+		}
+	// 入口文件为main.js
+	//输出文件名称为bundle.js
+	目录结构
+		react
+			css
+				main.less
+			js
+				MainFoot.js
+				Home.js
+				Kind.js
+				Cart.js
+				User.js
+				More.js
+			libs
+				zepto.js
+			demo16_路由.html
+			main.js
+			bundle.js
+2、入口文件
+	main.js
+	
+		//引入react模块,必须引入，每一个组件视情况而定引入react-dom
+			var React = require("react");
+			var ReactDOM = require("react-dom");
+		
+		//引入需要自定义的组件	
+			var MainFoot = require("./projs/MainFoot");
+		//当前组件的写法，头/内容/底部/底部中引入了MainFoot模块
+			var Main = React.createClass({
+				render:function(){
+					return (
+						<div className="rootBox">
+							<header id="header">header</header>
+							<section id="content">content</section>
+							<footer id="footer"><MainFoot/></footer>
+						</div>
+					)
+				}
+			});
+			
+		//将我们的Mian组件渲染到页面上	
+			ReactDOM.render(<Main/>,document.getElementById("app"));
+3.MainFoot.js
+	var React = require("react");
+	var ReactDOM = require("react-dom");
+	
+	var MainFoot = React.createClass({
+		render:function(){
+			return (
+				<ul>
+					<li >
+						首页
+					</li>
+					<li >
+						分类
+					</li>
+					<li >
+						购物车
+					</li>
+					<li >
+						我的
+					</li>
+					<li >
+						更多
+					</li>
+				</ul>
+				
+			)
+		}
+	});
+	//暴露当前组件
+	module.exports = MainFoot;
+4、创建我们需要的各个组件--页面---模块
+	Home.js/Kind.js/Cart.js/User.js/More.js
+	
+	以Home.js为例
+		var React = require("react");
+		var Home = React.createClass({
+			render:function(){
+				return (
+					<div>
+					首页
+					</div>
+					
+				)
+			}
+		});
+		
+		module.exports = Home;
+5、路由---底部导航点击效果
+	MainFoot.js中
+	//添加点击事件，和自定义属性data-id
+	<li onClick={this.clickHandle} data-id="0">首页</li>
+	
+	clickHandle:function(e){
+		//通过e.target获取到我们的dom节点,并且获取自定的属性的值
+		var currentIndex = e.target.getAttrbuite("data-id");
+		currentIndex = currentIndex*1;//类型转换
+		
+		switch (currentIndex){
+			case 0;
+				//首页
+				break;
+			case 1;
+				//分类
+				break;
+			case 2;
+				//购物车
+				break;
+			case 3;
+				//用户
+				break;
+			case 4;
+				//更多
+				break;
+		
+		}
+		
+	}
+
+6、以首页点击事件为例来更改内容
+	case 0:
+		var Home = require("./Home");
+		ReactDOM.unmountComponentAtNode(document.getElementById("content"));
+		ReactDOM.rander(<Home/>,document.getElemntById("contnet"));
+		break;
+7、点击切换样式
+	状态---改变 --- 内容
+	状态改变可以引起视图的二次渲染
+	//设置我们的初始的状态
+	getInitialState:function(){
+		return {
+			activeIndex:0
+		}
+	}
+	
+	点击不同的选项-----clickHandle事件中
+	this.setState({
+		activeIndex:currentIndex
+	})
+	
+	
+	//通过this.state.activeIndex进行标底部选项状态
+	this.state.activeIndex
+	className = {this.state.activeIndex == 0?'active':''}
+	
+8、轮播图
+	Home.js
+		<div className="swiper-container">
+			<div className="swiper-wrapper">
+				{this.state.imgsList}
+			</div>
+			<div className="swiper-pagination"></div>
+		</div>
+	在该组件中
+		getInitialState:function(){
+			return {
+				//轮播图列表
+				imgsList:""
+			}
+		},
+		componentWillMount：function(){
+			//ajax请求
+			var that = this;
+			$.ajax({
+				..
+				..
+				success:function(data){
+					
+					var len = data.length;
+					var arr = [];
+					for(var i = 0 ; i < len ; i++){
+						arr.push(<li>{data[i].name}</li>);
+					}
+					//更改状态
+					that.setState({
+						imgsList:arr
+					})
+				}
+			})
+		},
+		render:function(){
+			return (
+				<div>
+					{this.state.imgsList}
+				<div>
+			)
+		},
+		componentDidUpdate:function(){
+			//实例化对象
+		}
+9、首页的产品列表
+	9.1）写一ProList组件
+		getInitialState:function(){
+			return {
+				proList:""
+			}
+		},
+		componentWillMount:function(){
+			//ajax请求
+		},
+		render:function(){
+			return(
+				<ul>
+					{this.state.proList}
+				</ul>
+			)
+		},
+		componentDidUpdate:function(){
+			//点击事件
+		}
+	
+
+
+
+
+
+
+
